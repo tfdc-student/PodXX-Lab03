@@ -12,3 +12,16 @@ provider "intersight" {
   secretkey = var.secretkey
   endpoint = var.endpoint
 }
+
+resource "intersight_server_profile" "srv_PodXX" {
+  name   = "srv_PodXX"
+  action = "No-op"
+  tags {
+    key   = "server"
+    value = "demo"
+  }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.default.moid
+  }
+}
