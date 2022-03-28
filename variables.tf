@@ -7,3 +7,8 @@ variable "secretkey" {
   type = string
   description = "Intersight Secret Key (private key)"
 }
+
+variable "endpoint" {
+  type = string
+  description = "URL to Intersight"
+}
