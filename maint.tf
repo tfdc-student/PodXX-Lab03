@@ -25,3 +25,19 @@ resource "intersight_server_profile" "srv_PodXX" {
     moid        = data.intersight_organization_organization.default.moid
   }
 }
+
+resource "intersight_ssh_policy" "ssh_policy_PodXX" {
+  name        = "ssh_policy_PodXX"
+  description = "ssh policy"
+  enabled     = true
+  port        = 22
+  timeout     = 1800
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.default.moid
+  }
+  profiles {
+    moid        = intersight_server_profile.srv_PodXX.moid
+    object_type = "server.Profile"
+  }
+}
