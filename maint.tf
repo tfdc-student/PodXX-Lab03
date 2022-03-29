@@ -24,3 +24,20 @@ resource "intersight_ssh_policy" "ssh_policy_PodXX" {
     moid = data.intersight_organization_organization.default.moid
   }
 }
+
+resource "intersight_server_profile" "srv_PodXX" {
+  name   = "srv_PodXX"
+  action = "No-op"
+  tags {
+    key   = "server"
+    value = "demo"
+  }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.default.moid
+  }
+  resource_bucket {
+    object_type = "ssh.Policy"
+    moid = intersight_ssh_policy.ssh_policy_PodXX.moid
+  }
+}
