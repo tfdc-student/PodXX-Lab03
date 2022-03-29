@@ -21,6 +21,6 @@ resource "intersight_ssh_policy" "ssh_policy_PodXX" {
   timeout     = 1800
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.default.moid
   }
 }
