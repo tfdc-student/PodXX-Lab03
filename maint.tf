@@ -13,19 +13,6 @@ provider "intersight" {
   endpoint = var.endpoint
 }
 
-resource "intersight_server_profile" "srv_PodXX" {
-  name   = "srv_PodXX"
-  action = "No-op"
-  tags {
-    key   = "server"
-    value = "demo"
-  }
-  organization {
-    object_type = "organization.Organization"
-    moid        = data.intersight_organization_organization.default.moid
-  }
-}
-
 resource "intersight_ssh_policy" "ssh_policy_PodXX" {
   name        = "ssh_policy_PodXX"
   description = "ssh policy"
@@ -34,10 +21,6 @@ resource "intersight_ssh_policy" "ssh_policy_PodXX" {
   timeout     = 1800
   organization {
     object_type = "organization.Organization"
-    moid        = data.intersight_organization_organization.default.moid
-  }
-  profiles {
-    moid        = intersight_server_profile.srv_PodXX.moid
-    object_type = "server.Profile"
+    moid        = var.organization
   }
 }
