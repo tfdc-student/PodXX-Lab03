@@ -25,8 +25,6 @@ resource "intersight_ssh_policy" "ssh_policy_PodXX" {
   }
 }
 
-
-/*
 resource "intersight_server_profile" "srv_PodXX" {
   name   = "srv_PodXX"
   action = "No-op"
@@ -39,8 +37,7 @@ resource "intersight_server_profile" "srv_PodXX" {
     moid        = data.intersight_organization_organization.default.moid
   }
   policy_bucket {
-    object_type = "ssh.Policy"
-    moid = intersight_ssh_policy.ssh_policy_PodXX.moid
+ 	  moid = intersight_ssh_policy.ssh_policy_PodXX.moid
+ 	  object_type = "policy.ssh"
   }
 }
-*/
