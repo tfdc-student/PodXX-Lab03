@@ -38,6 +38,6 @@ resource "intersight_server_profile" "srv_PodXX" {
   }
   policy_bucket {
  	  moid = intersight_ssh_policy.ssh_policy_PodXX.moid
- 	  object_type = "policy.ssh"
+ 	  object_type = "ssh.Policy"
   }
 }
